@@ -22,7 +22,7 @@
     <ClInclude Include="Bitpool.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bitpool.cpp" />
+    <ClCompile Include="FOO.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0FCCE526-33C9-4B44-9BED-CF45C540D824}</ProjectGuid>

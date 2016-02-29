@@ -54,6 +54,7 @@ template <typename T>
 BitPool<T>::BitPool(size_t poolSize)
 {
 	//TODO: implement
+	sizeof(T);
 }
 
 template <typename T>
@@ -65,7 +66,7 @@ BitPool<T>::~BitPool()
 template<typename T>
 inline T * BitPool<T>::GetObject()
 {
-	return NULL;
+	return nullptr;
 }
 
 template<typename T>
@@ -77,7 +78,7 @@ inline bool BitPool<T>::ReturnObject(T * pType)
 template<typename T>
 inline T * BitPool<T>::GetObjectAt(size_t index)
 {
-	return NULL;
+	return nullptr;
 }
 
 template<typename T>
