@@ -1,3 +1,10 @@
 ﻿  FOO.cpp
-  Bitpool.vcxproj -> \\banner.main.ad.rit.edu\students\kag4380\IGMProfile\Documents\Visual Studio 2015\Projects\Bitpool\Debug\Bitpool.exe
-  Bitpool.vcxproj -> \\banner.main.ad.rit.edu\students\kag4380\IGMProfile\Documents\Visual Studio 2015\Projects\Bitpool\Debug\Bitpool.pdb (Partial PDB)
+\\banner.main.ad.rit.edu\students\kag4380\igmprofile\documents\visual studio 2015\projects\bitpool\bitpool\bitpool.h(79): warning C4305: '=': truncation from 'int' to 'char'
+  \\banner.main.ad.rit.edu\students\kag4380\igmprofile\documents\visual studio 2015\projects\bitpool\bitpool\bitpool.h(68): note: while compiling class template member function 'BitPool<FOO>::BitPool(size_t)'
+  \\banner.main.ad.rit.edu\students\kag4380\igmprofile\documents\visual studio 2015\projects\bitpool\bitpool\foo.cpp(19): note: see reference to function template instantiation 'BitPool<FOO>::BitPool(size_t)' being compiled
+  \\banner.main.ad.rit.edu\students\kag4380\igmprofile\documents\visual studio 2015\projects\bitpool\bitpool\foo.cpp(19): note: see reference to class template instantiation 'BitPool<FOO>' being compiled
+\\banner.main.ad.rit.edu\students\kag4380\igmprofile\documents\visual studio 2015\projects\bitpool\bitpool\bitpool.h(79): warning C4309: '=': truncation of constant value
+\\banner.main.ad.rit.edu\students\kag4380\igmprofile\documents\visual studio 2015\projects\bitpool\bitpool\bitpool.h(132): error C2059: syntax error: ';'
+  \\banner.main.ad.rit.edu\students\kag4380\igmprofile\documents\visual studio 2015\projects\bitpool\bitpool\bitpool.h(127): note: while compiling class template member function 'size_t BitPool<FOO>::GetMaxObjects(void) const'
+  \\banner.main.ad.rit.edu\students\kag4380\igmprofile\documents\visual studio 2015\projects\bitpool\bitpool\foo.cpp(21): note: see reference to function template instantiation 'size_t BitPool<FOO>::GetMaxObjects(void) const' being compiled
+\\banner.main.ad.rit.edu\students\kag4380\igmprofile\documents\visual studio 2015\projects\bitpool\bitpool\bitpool.h(132): error C2059: syntax error: ')'

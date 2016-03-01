@@ -1,6 +1,7 @@
 #ifndef __BITPOOL_H__
 #define __BITPOOL_H__
-
+#include <iostream>
+#include <string.h>
 // This BitPool will allocate a contiguous array of objects of type [T]. It
 // internally keeps track of object state as 'in use' and 'free' using a separate
 // allocation block of bits; one bit per object in the pool.
@@ -8,7 +9,7 @@
 // considered to be in use by the calling system. An object is 'free' 
 // when it either has not yet been retrieved by GetObject() or when it has 
 // been returned to the pool by ReturnObject().
-
+using namespace std;
 template <typename T>
 class BitPool
 {
@@ -48,13 +49,36 @@ public:
 private:
 	T *pTypeArray_;       //! The pointer to the contiguous array of [T]
 						  //TODO: add more internal control variables
+
+	/* Each object will have a header that points to next object & 
+	a boolean that checks if it is free or in use*/
+	struct header {
+		unsigned short* nextAddress;
+		bool free;
+	};
+
+	//Based on the size provided, set the pool size
+	int poolSizeInBytes;
+	char *head;
+	char *p;
 };
 
 template <typename T>
 BitPool<T>::BitPool(size_t poolSize)
 {
-	//TODO: implement
-	sizeof(T);
+	/* Allocate memory based on number of objects(poolSize) & header for each object
+	header = First 2 bytes to store next object address,
+	         Next 1 byte for a bool to indicate if current object is free or in use*/
+	poolSizeInBytes = poolSize * (sizeof(T) + 3);
+	char* bitPool = new char[poolSizeInBytes];
+	p = bitPool;
+	head = bitPool;
+
+	// Initialise array with null characters
+	for (int i = 0; i < poolSizeInBytes; i++) {
+		bitPool[i] = '/0';
+	}
+	cout << *(p + 1) << endl;
 }
 
 template <typename T>
@@ -66,7 +90,18 @@ BitPool<T>::~BitPool()
 template<typename T>
 inline T * BitPool<T>::GetObject()
 {
-	return nullptr;
+	unsigned short* current = (unsigned short*) head;	
+
+	// while the free bool is not found keep searching
+	while (*(current +1) != '\0') {
+		current = *current;
+	}
+	// Set current object's header's first two bytes with address of next object
+	*current = (char*)current + 2 + sizeof(T);
+	// Set current object's third byte to 1 to indicate "in use"
+	*(current + 1) = 1;
+	// return the pointer from where the object begins
+	return current +3;
 }
 
 template<typename T>
@@ -90,7 +125,14 @@ inline size_t BitPool<T>::GetObjectsInUse() const
 template<typename T>
 inline size_t BitPool<T>::GetMaxObjects() const
 {
-	return size_t();
+	int count = 0;
+	unsigned short* current = (unsigned short*) head;
+
+	while (*(current + 1) == '\0' && current < (unsigned short*)head + poolSizeInBytes) {
+		current = (unsigned short*)((char*)current + 2 + sizeof(T);)
+		count++;
+	}
+	return size_t(count);
 }
 
 
