@@ -135,7 +135,4 @@ inline size_t BitPool<T>::GetMaxObjects() const
 	return size_t(count);
 }
 
-
-//TODO: implement the rest of the functions
-
 #endif //__BITPOOL_H__
